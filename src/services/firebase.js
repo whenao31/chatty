@@ -7,6 +7,7 @@ import { getDatabase } from 'firebase/database'
 const firebaseConfig = {
   apiKey: "AIzaSyAYHD5zZ-1kISNjKKuUoQ41JuNBGAug5S0",
   authDomain: "ferreteria-reto.firebaseapp.com",
+  databaseURL: "https://ferreteria-reto-default-rtdb.firebaseio.com",
   projectId: "ferreteria-reto",
   storageBucket: "ferreteria-reto.appspot.com",
   messagingSenderId: "273842353893",
