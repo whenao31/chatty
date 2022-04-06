@@ -5,13 +5,21 @@ import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import PrivateRoute from "./components/PrivateRoute";
+import './styles.css'
 
 function App() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/chat" element={<PrivateRoute component={Chat} />} />
+        <Route path="/" element={<Login />} />
+        <Route 
+          path="/chat" 
+          element={
+            <PrivateRoute>
+              <Chat />
+            </PrivateRoute>
+          }
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
       </Routes>
