@@ -9,7 +9,7 @@ export default function Login() {
     })
     const [error, setError] = useState("")
 
-    const { signup } = useAuth()
+    const { login } = useAuth()
     const navigate = useNavigate()
 
     const handleChange = ({ target: { name, value } }) => {
@@ -20,7 +20,7 @@ export default function Login() {
         e.preventDefault()
         setError("")
         try {
-            await signup(user.email, user.password)
+            await login(user.email, user.password)
             navigate("/chat")
         } catch (error) {
             setError(error.code)

@@ -9,10 +9,10 @@ import { auth } from '../services/firebase'
 const provider = new GoogleAuthProvider()
 const gitHubProvider = new GithubAuthProvider()
 
-export const authContext = createContext()
+export const AuthContext = createContext()
 
 export const useAuth = () => {
-    const context = useContext(authContext)
+    const context = useContext(AuthContext)
     return context
 }
 
@@ -38,8 +38,8 @@ export function AuthProvider({ children }) {
     }, [])
 
     return (
-        <authContext.Provider value={{ signup, login, user, logout, loading, loginWithGmail, loginWithGitHub }}>
+        <AuthContext.Provider value={{ signup, login, user, logout, loading, loginWithGmail, loginWithGitHub }}>
             {children}
-        </authContext.Provider>
+        </AuthContext.Provider>
     )
 }

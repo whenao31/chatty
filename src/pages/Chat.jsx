@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { auth, db } from "../services/firebase";
 import { ref, onValue, set } from "firebase/database";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Chat() {
   const [user, setUser] = useState(auth.currentUser);
@@ -9,6 +11,9 @@ export default function Chat() {
   const [error, setError] = useState(null);
   const [writeError, setWriteError] = useState(null);
   const [loadingChats, setLoadingChats] = useState(true);
+
+
+  const navigate = useNavigate()
 
   function getChats() {
     setError(null);
@@ -66,6 +71,16 @@ export default function Chat() {
     }
   };
 
+  const handleSignout = async() => {
+    setError("")
+        try {
+            await signOut(auth);
+            navigate("/login")
+        } catch (error) {
+            setError(error.code)
+        }
+  }
+
   return (
     <div>
       <div className="chat-area">
@@ -78,6 +93,7 @@ export default function Chat() {
         )}
 
         <button onClick={SendMsg}>Send</button>
+        <button onClick={handleSignout}>Logout</button>
       </div>
     </div>
   );

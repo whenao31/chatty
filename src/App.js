@@ -4,13 +4,14 @@ import Chat from "./pages/Chat";
 import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/" element={<Chat />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/chat" element={<PrivateRoute component={Chat} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
       </Routes>
